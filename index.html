@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI 時光機模擬版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f9fafb;
+        padding: 2rem;
+        max-width: 600px;
+        margin: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      #imageBox {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      #imageBox img {
+        max-height: 100%;
+        max-width: 100%;
+        transition: opacity 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AI 時光機模擬版</h1>
+    <p>上傳照片（模擬）：<input type="file" disabled /></p>
+    <p>影片標題：<input type="text" value="小瀚的一生" /></p>
+    <button onclick="generate()">一鍵生成變臉動畫</button>
+    <div id="imageBox">
+      <img id="face" src="https://i.imgur.com/E8ErndF.jpg" />
+    </div>
+
+    <script>
+      const images = [
+        "https://i.imgur.com/E8ErndF.jpg",
+        "https://i.imgur.com/f4lzylk.jpg",
+        "https://i.imgur.com/sKDMRNu.jpg",
+        "https://i.imgur.com/sO4DX8W.jpg",
+        "https://i.imgur.com/sKDMRNu.jpg",
+        "https://i.imgur.com/f4lzylk.jpg",
+        "https://i.imgur.com/E8ErndF.jpg"
+      ];
+
+      function generate() {
+        let i = 0;
+        const img = document.getElementById("face");
+        const interval = setInterval(() => {
+          img.src = images[i];
+          i++;
+          if (i >= images.length) clearInterval(interval);
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>
